@@ -31,8 +31,12 @@
 
 <mongo:db-factory id="mongoDbFactory" dbname="${mongo.db}" mongo-ref="mongo" username="${mongo.user}" password="${mongo.pass}"/>
 
-<beans:bean id="anotherMongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
   <beans:constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 </beans:bean>
+ <mongo:repositories base-package="com.wwt.reminder.repository" />
 	
+ 
+<beans:bean id="remindFacade" class="com.wwt.reminder.logic.impl.RemindFacadeImpl"/>
+
 </beans:beans>

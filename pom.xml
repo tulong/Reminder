@@ -24,6 +24,13 @@
 </repositories>
 
 	<dependencies>
+	
+	
+    <dependency>
+	<groupId>commons-codec</groupId>
+	<artifactId>commons-codec</artifactId>
+	<version>1.6</version>
+</dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -118,6 +125,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		
 
 	<!-- mongodb -->
 <dependency>
@@ -125,6 +133,13 @@
     <artifactId>spring-data-mongodb</artifactId>
     <version>1.0.0.M5</version>
   </dependency>
+  
+<dependency>
+	<groupId>commons-email</groupId>
+	<artifactId>commons-email</artifactId>
+	<version>1.1</version>
+</dependency>
+            
 		
 		<!-- Test -->
 		<dependency>

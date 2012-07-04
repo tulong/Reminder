@@ -1,22 +1,24 @@
 package com.wwt.reminder.model;
 
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class Reminder {
 
-	private Calendar startCalendar;
-	private Calendar lastEditCalendar;
-//	private Calendar deadlineCalendar;
-	private String deadlineCalendar;
-	
-	public String getDeadlineCalendar() {
-		return deadlineCalendar;
-	}
-
-	public void setDeadlineCalendar(String deadlineCalendar) {
-		this.deadlineCalendar = deadlineCalendar;
-	}
+	@Indexed
+	@Id
+	private ObjectId id;
+	private Date startDate;
+	private Date lastEditDate;
+//	private Date deadlineDate;
+	private Date reminderDate;
+	private String userName;
 
 	private String task;
 	
@@ -24,29 +26,63 @@ public class Reminder {
 	
 	private List<Informer> informers;
 
-	public Calendar getStartCalendar() {
-		return startCalendar;
+	/**
+	 * @return the id
+	 */
+	public ObjectId getId() {
+		return id;
 	}
 
-	public void setStartCalendar(Calendar startCalendar) {
-		this.startCalendar = startCalendar;
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(ObjectId id) {
+		this.id = id;
 	}
 
-	public Calendar getLastEditCalendar() {
-		return lastEditCalendar;
+	/**
+	 * @return the startDate
+	 */
+	public Date getStartDate() {
+		return startDate;
 	}
 
-	public void setLastEditCalendar(Calendar lastEditCalendar) {
-		this.lastEditCalendar = lastEditCalendar;
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
-//	public Calendar getDeadlineCalendar() {
-//		return deadlineCalendar;
-//	}
-//
-//	public void setDeadlineCalendar(Calendar deadlineCalendar) {
-//		this.deadlineCalendar = deadlineCalendar;
-//	}
+	/**
+	 * @return the lastEditDate
+	 */
+	public Date getLastEditDate() {
+		return lastEditDate;
+	}
+
+	/**
+	 * @param lastEditDate the lastEditDate to set
+	 */
+	public void setLastEditDate(Date lastEditDate) {
+		this.lastEditDate = lastEditDate;
+	}
+
+
+
+	/**
+	 * @return the reminderDate
+	 */
+	public Date getReminderDate() {
+		return reminderDate;
+	}
+
+	/**
+	 * @param reminderDate the reminderDate to set
+	 */
+	public void setReminderDate(Date reminderDate) {
+		this.reminderDate = reminderDate;
+	}
 
 	public String getTask() {
 		return task;
@@ -72,11 +108,19 @@ public class Reminder {
 		this.informers = informers;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		StringBuilder stringBuilder=new StringBuilder(100);
-		stringBuilder.append("Deadline:"+this.deadlineCalendar+" "+this.task);
+		stringBuilder.append("Deadline:"+this.reminderDate+" "+this.task);
 		return stringBuilder.toString();
 	}
 	
