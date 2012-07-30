@@ -3,6 +3,7 @@ package com.wwt.reminder.logic.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.wwt.reminder.logic.RemindFacade;
 import com.wwt.reminder.model.Reminder;
@@ -10,6 +11,7 @@ import com.wwt.reminder.model.User;
 import com.wwt.reminder.repository.ReminderRepository;
 import com.wwt.reminder.repository.UserRepository;
 
+@Service
 public class RemindFacadeImpl implements RemindFacade {
 	
 	@Autowired

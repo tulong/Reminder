@@ -1,10 +1,13 @@
 package com.wwt.reminder.logic.impl;
 
+import org.springframework.stereotype.Service;
+
 import net.webservicex.Currency;
 import net.webservicex.CurrencyConvertorSoap;
 
 import com.wwt.reminder.logic.CurrencyConvertor;
 
+@Service
 public class CurrencyConvertorImpl implements CurrencyConvertor {
 
 	@Override
