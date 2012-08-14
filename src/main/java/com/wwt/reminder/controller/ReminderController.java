@@ -42,7 +42,8 @@ public class ReminderController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+//		SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat dateFormat=new SimpleDateFormat("MM/dd/yyyy hh:mm a");
 		dateFormat.setLenient(false);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
@@ -50,17 +51,19 @@ public class ReminderController {
 	/**
 	 * Simply render the view
 	 */
-	@RequestMapping(value = "/addRemind", method = RequestMethod.GET)
-	public String showAddView(Locale locale, Model model) {
-		
-		return "addRemind";
+	@RequestMapping(value = "/remind", method = RequestMethod.GET)
+	public String showAddView(@ModelAttribute("currentUser") User user,Model model) {
+
+		List<Reminder> reminders=reminderRepository.findByUserName(user.getName());
+		model.addAttribute("remindList", reminders);
+		return "remind";
 	}
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 * @throws ParseException 
 	 */
-	@RequestMapping(value = "/addRemind", method = RequestMethod.POST)
+	@RequestMapping(value = "/remind", method = RequestMethod.POST)
 	public String addRemind(@ModelAttribute("currentUser") User user, Date reminderDate,String task) throws ParseException {
 //		System.out.println(reminder.toString());
 		System.out.println(reminderDate);
@@ -77,7 +80,9 @@ public class ReminderController {
 		reminder.setStartDate(currentDate);
 		reminderRepository.save(reminder);
 		
-		return "home";
+		reminder.work(user.getInformers());
+		
+		return "redirect:remind";
 	}
 	
 	@RequestMapping(value = "/listRemind", method = RequestMethod.GET)

@@ -1,9 +1,27 @@
 package com.wwt.reminder.model;
 
-import java.util.Calendar;
-
-public interface Informer {
+public class Informer {
 	
-	public void sendInfo(Calendar calendar,String info) ;
-
+	private String number;
+	private InformerType type;
+	
+	public String getNumber() {
+		return number;
+	}
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	public InformerType getType() {
+		return type;
+	}
+	public void setType(InformerType type) {
+		this.type = type;
+	}
+	
+	public void inform(String message) {
+		System.out.println(type);
+		System.out.println(number);
+		System.out.println(message);
+	}
+	
 }

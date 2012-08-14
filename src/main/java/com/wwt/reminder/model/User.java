@@ -1,5 +1,7 @@
 package com.wwt.reminder.model;
 
+import java.util.ArrayList;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -14,55 +16,35 @@ public class User {
 	private String name;
 	private String pass;
 	private String email;
-	/**
-	 * @return the id
-	 */
+	private ArrayList<Informer> informers;
 	public ObjectId getId() {
 		return id;
 	}
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
-	/**
-	 * @return the name
-	 */
 	public String getName() {
 		return name;
 	}
-	/**
-	 * @param name the name to set
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	/**
-	 * @return the pass
-	 */
 	public String getPass() {
 		return pass;
 	}
-	/**
-	 * @param pass the pass to set
-	 */
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-
+	public ArrayList<Informer> getInformers() {
+		return informers;
+	}
+	public void setInformers(ArrayList<Informer> informers) {
+		this.informers = informers;
+	}
 }

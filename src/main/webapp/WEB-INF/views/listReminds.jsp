@@ -11,8 +11,11 @@
 
 <c:if test="${!empty remindList}" >
 <c:forEach items="${remindList}" var="remind" >
-<input type="text" name="reminderDate" value="${remind.reminderDate}"/>
-<input type="text" name="task" value="${remind.task}"/>
+<fieldset>
+<legend>Personalia:</legend>
+Date:<input type="text" name="reminderDate" value="${remind.reminderDate}"/><br />
+Task:<input type="text" name="task" value="${remind.task}"/><br />
+</fieldset>
 </c:forEach>
 </c:if>
 </body>

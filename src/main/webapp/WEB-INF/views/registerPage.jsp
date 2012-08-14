@@ -7,12 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<form action="login" method="post">
+<form action="registerPage" method="post">
 <label>User Name:</label>
-<input type="text" name="username" value="aaa"/><br />
+<input type="text" name="name"/><br />
 <label>Password:</label>
-<input type="password" name="password" value="aaa"><br />
+<input type="password" name="pass"><br />
+<label>Email:</label>
+<input type="text" name="email"><br />
 <input type="submit" value="Submit"/>
 </form>
 </body>

@@ -1,5 +1,7 @@
 package com.wwt.reminder.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,14 +24,14 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String register(String username,String password, Model model) {
+	public String register(String username,String password, Model model,HttpSession session) {
 		User user=userRepository.findByName(username);
 		if (user==null) {
 			return "register";
 		}else {
 			model.addAttribute("message", "Welcome "+username);
-			
-			return "success";
+			session.setAttribute("currentUser", user);
+			return "redirect:remind";
 		}
 	}
 }

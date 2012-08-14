@@ -1,12 +1,16 @@
 package com.wwt.reminder.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.scheduling.commonj.TimerManagerTaskScheduler;
 
 @Document
 public class Reminder {
@@ -122,6 +126,23 @@ public class Reminder {
 		StringBuilder stringBuilder=new StringBuilder(100);
 		stringBuilder.append("Deadline:"+this.reminderDate+" "+this.task);
 		return stringBuilder.toString();
+	}
+	
+	public void work(final ArrayList<Informer> informers) {
+		
+		
+		Timer timer=new Timer("aaa");
+		TimerTask timerTask=new TimerTask() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				System.out.println(Thread.currentThread().getName());
+				for (Informer informer : informers) {
+//					informer.inform(this.task);
+				}
+			}
+		};
 	}
 	
 }
